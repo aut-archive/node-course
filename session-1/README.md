@@ -3,7 +3,7 @@
 In this session we get started using Node.js.
 
 ### Intro
-- [Basic Server](./intro-1-basic-server)
+- [Basic Server](./intro-basic-server)
 
 ### Objects
 [TODO]
