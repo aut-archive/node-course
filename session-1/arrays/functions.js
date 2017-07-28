@@ -60,7 +60,7 @@ let b = a.shift();
 let fruit = ['cherries', 'apples', 'bananas'];
 fruit.sort(); // ['apples', 'bananas', 'cherries']
 
-var items = [
+let items = [
   { name: 'Edward', value: 21 },
   { name: 'Sharpe', value: 37 },
   { name: 'And', value: 45 },
@@ -74,12 +74,12 @@ items.sort(function (a, b) {
   return a.value - b.value;
 });
 
-var myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
-var removed = myFish.splice(myFish.length - 3, 2);
+let myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
+let removed = myFish.splice(myFish.length - 3, 2);
 
 /* unshift */
 
-var arr = [1, 2];
+let arr = [1, 2];
 
 arr.unshift(0); // result of call is 3, the new array length
 // arr is [0, 1, 2]
@@ -89,3 +89,145 @@ arr.unshift(-2, -1); // = 5
 
 arr.unshift([-3]);
 // arr is [[-3], -2, -1, 0, 1, 2]
+
+/* Concat */
+let alpha = ['a', 'b', 'c'];
+
+let alphaNumeric = alpha.concat(1, [2, 3]);
+
+console.log(alphaNumeric); 
+// results in ['a', 'b', 'c', 1, 2, 3]
+
+
+let num1 = [[1]];
+let num2 = [2, [3]];
+
+let nums = num1.concat(num2);
+
+console.log(nums);
+// results in [[1], 2, [3]]
+
+// modify the first element of num1
+num1[0].push(4);
+
+console.log(nums);
+// results in [[1, 4], 2, [3]]
+
+/* includes */
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+[1, 2, NaN].includes(NaN); // true
+
+/* indexOf */
+let array = [2, 9, 9];
+array.indexOf(2);     // 0
+array.indexOf(7);     // -1
+array.indexOf(9, 2);  // 2
+array.indexOf(2, -1); // -1
+array.indexOf(2, -3); // 0
+
+
+/* join */
+let a = ['Wind', 'Rain', 'Fire'];
+a.join();      // 'Wind,Rain,Fire'
+a.join(', ');  // 'Wind, Rain, Fire'
+a.join(' + '); // 'Wind + Rain + Fire'
+a.join('');    // 'WindRainFire'
+
+/* lastIndexOf */
+let numbers = [2, 5, 9, 2];
+numbers.lastIndexOf(2);     // 3
+numbers.lastIndexOf(7);     // -1
+numbers.lastIndexOf(2, 3);  // 3
+numbers.lastIndexOf(2, 2);  // 0
+numbers.lastIndexOf(2, -2); // 0
+numbers.lastIndexOf(2, -1); // 3
+
+/* toString */
+let months = ['Jan', 'Feb', 'Mar', 'Apr'];
+months.toString(); // "Jan,Feb,Mar,Apr"
+
+/* entries */
+let a = ['a', 'b', 'c'];
+let iterator = a.entries();
+
+console.log(iterator.next().value); // [0, 'a']
+console.log(iterator.next().value); // [1, 'b']
+console.log(iterator.next().value); // [2, 'c']
+
+/* filter */
+let words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+
+let longWords = words.filter(function(word){
+  return word.length > 6;
+});
+
+// Filtered array longWords is ["exuberant", "destruction", "present"]
+
+/* find */
+function isBigEnough(element) {
+  return element >= 15;
+}
+
+[12, 5, 8, 130, 44].find(isBigEnough); // 130
+
+/* findIndex */
+function isBigEnough(element) {
+  return element >= 15;
+}
+
+[12, 5, 8, 130, 44].findIndex(isBigEnough); 
+// index of 4th element in the Array is returned,
+// so this will result in '3'
+
+/* for */
+let items = ['item1', 'item2', 'item3'];
+let copy = [];
+
+for (let i=0; i<items.length; i++) {
+  copy.push(items[i])
+}
+
+/* forEach */
+let items = ['item1', 'item2', 'item3'];
+let copy = [];
+
+items.forEach(function(item){
+  copy.push(item)
+});
+
+/* keys */
+var arr = ['a', , 'c'];
+var sparseKeys = Object.keys(arr);
+var denseKeys = [...arr.keys()];
+console.log(sparseKeys); // ['0', '2']
+console.log(denseKeys);  // [0, 1, 2]
+
+
+/* map */
+var kvArray = [{key: 1, value: 10}, 
+               {key: 2, value: 20}, 
+               {key: 3, value: 30}];
+
+var reformattedArray = kvArray.map(function(obj) { 
+   var rObj = {};
+   rObj[obj.key] = obj.value;
+   return rObj;
+});
+
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}], 
+
+// kvArray is still: 
+// [{key: 1, value: 10}, 
+//  {key: 2, value: 20}, 
+//  {key: 3, value: 30}]
+
+var total = [0, 1, 2, 3].reduce(function(sum, value) {
+  return sum + value;
+}, 0);
+// total is 6
+
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+  return a.concat(b);
+}, []);
+// flattened is [0, 1, 2, 3, 4, 5]
