@@ -12,4 +12,4 @@ let last = fruits.pop(); // remove Orange (from the end)
 // ["Apple", "Banana"];
 
 // this is how to remove an item
-let removedItem = fruits.splice(pos, 1);
+let removedItem = fruits.splice(1, 1);
