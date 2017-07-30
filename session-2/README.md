@@ -9,7 +9,11 @@ In this session we'll discuss the topics below
 [TODO]
 
 ### Promise & Async/Await
-[TODO]
+[TODO]  
+
+References: 
+* [Promises](https://developers.google.com/web/fundamentals/getting-started/primers/promises)
+* [Async/Await](https://ponyfoo.com/articles/understanding-javascript-async-await)
 
 ### File IO
 [TODO]
