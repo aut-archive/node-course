@@ -11,6 +11,13 @@ Node.js Course Materials.
     - Functions
     - Control Flow
 
+- [Session 2](./session-2)
+    - NPM Ecosystem
+    - Modules & Require System
+    - Promise & Async/Await
+    - IO: fs, fs-extra, readline
+    - Prototype & Class
+
 ## Contributors
 - [Pooya Parsa](https://github.com/pi0)
 - [Iman Tabrizian](https://github.com/Tabrizian)
