@@ -1,6 +1,6 @@
 const request = require('request')
 
-function google() {
+function google () {
   return new Promise((resolve, reject) => {
     request('https://google.com', (err, res, body) => {
       if (err) {
