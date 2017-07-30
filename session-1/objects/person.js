@@ -1,20 +1,38 @@
-let person = {};
 
-let person = {
-    name: ['Bob', 'Smith'],
-    age: 32,
-    gender: 'male',
-    interests: ['music', 'skiing'],
-    bio: function () {
-        alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes' + this.interests[0] + ' and ' + this.interests[1] + '.');
+// console.log(JSON.stringify(person))
+
+// console.log(person['firstName'])
+
+// Object.values(person).forEach((e) => {
+//     console.log(e)
+// })
+
+function Person(firstName, lastName, birthPlace) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.name = () => {
+        this.firstName + this.lastName
     }
+}
+
+// console.log(Person("1", "2", 1393))
+
+// let me = new Person("Iman", "Tabrizian", "Tehran")
+let person = {
+    name: {first: "Iman", last: "Tabrizian"},
+    fullName: function() {
+        return this.name.first + ' ' + this
+    }
+}
+console.log(person.name.first)
+console.log(JSON.stringify(person))
+me.age = 18
+me.calculatedAttribute = () => {
+    return "Hello World!"
 };
 
-person.name[0]
-person.age
-person.bio()
-person['age']
-person.age = 45;
+console.log(me.calculatedAttribute())
+let field = "firstName"
 
-Object.keys(person)
-let copy = Object.assign({}, person)
+console.log(me[field])
+console.log(me)
