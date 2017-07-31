@@ -205,7 +205,6 @@ var denseKeys = [...arr.keys()];
 console.log(sparseKeys); // ['0', '2']
 console.log(denseKeys);  // [0, 1, 2]
 
-
 /* map */
 var kvArray = [{key: 1, value: 10}, 
                {key: 2, value: 20}, 
@@ -224,12 +223,24 @@ var reformattedArray = kvArray.map(function(obj) {
 //  {key: 2, value: 20}, 
 //  {key: 3, value: 30}]
 
+<<<<<<< HEAD
+/* reduce */
+var total = [0, 1, 2, 3].reduce(function(sum, value) {
+=======
 let total = [0, 1, 2, 3].reduce(function(sum, value) {
+>>>>>>> 5e3a103f13a288997ce871f98fefaea4d4c4f53e
   return sum + value;
-}, 0);
-// total is 6
+}, 0); // total is 6
 
 let flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
   return a.concat(b);
 }, []);
 // flattened is [0, 1, 2, 3, 4, 5]
+
+/* some */
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+}
+
+[2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+[12, 5, 8, 1, 4].some(isBiggerThan10); // true
