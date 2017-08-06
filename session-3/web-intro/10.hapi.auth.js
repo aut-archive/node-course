@@ -1,120 +1,95 @@
-const { Server } = require('hapi');
+const { Server } = require('hapi')
+const cookieAuth = require('hapi-auth-cookie')
 
-let uuid = 1;       // Use seq instead of proper unique identifiers for demo only
+let user = {
+	name: 'Iman',
+	password: '1234'
+}
+let app = new Server()
+app.connection({ port: 3000 });
 
-const users = {
-	john: {
-		id: 'john',
-		password: 'password',
-		name: 'John Doe'
-	}
-};
-
-const home = function (request, reply) {
-	reply('<html><head><title>Login page</title></head><body><h3>Welcome ' +
-		request.auth.credentials.name +
-		'!</h3><br/><form method="get" action="/logout">' +
-		'<input type="submit" value="Logout">' +
-		'</form></body></html>');
-};
-
-const login = function (request, reply) {
-
-	if (request.auth.isAuthenticated) {
-		return reply.redirect('/');
+app.register(cookieAuth, (err) => {
+	if(err) {
+		console.log(err)
 	}
 
-	let message = '';
-	let account = null;
+	app.auth.strategy('session', 'cookie', {
+    password: 'm!*"2/),p4:xDs%KEgVr7;e#85Ah^WYC',
+    cookie: 'future-studio-hapi-tutorials-cookie-auth-example',
+  })
 
-	if (request.method === 'post') {
-
-		if (!request.payload.username ||
-			!request.payload.password) {
-
-			message = 'Missing username or password';
-		}
-		else {
-			account = users[request.payload.username];
-			if (!account ||
-				account.password !== request.payload.password) {
-
-				message = 'Invalid username or password';
+	app.route({
+		method: 'GET',
+		path: '/private-route',
+		config: {
+			auth: 'session',
+			handler: function (request, reply) {
+				reply('Yeah! This message is only available for authenticated users!')
 			}
 		}
-	}
+	})
+	app.route({
+		method: 'POST',
+		path: '/login',
+		config: {
+			handler: function (request, reply) {
+				var username = request.payload.username
+				var password = request.payload.password
 
-	if (request.method === 'get' ||
-		message) {
+				// check if user exists in DB
+				// compare passwords
+        if(user.name === username && user.password === password) {
 
-		return reply('<html><head><title>Login page</title></head><body>' +
-			(message ? '<h3>' + message + '</h3><br/>' : '') +
-			'<form method="post" action="/login">' +
-			'Username: <input type="text" name="username"><br>' +
-			'Password: <input type="password" name="password"><br/>' +
-			'<input type="submit" value="Login"></form></body></html>');
-	}
 
-	const sid = String(++uuid);
-	request.server.app.cache.set(sid, { account: account }, 0, (err) => {
+          // if everything went smooth, set the cookie with "user" specific data
+          request.cookieAuth.set(user);
 
-		if (err) {
-			reply(err);
+          reply('Wohoo, great to see you')
+        } else {
+          reply('Wrong username or password')
+        }
+			}
 		}
+	})
+	app.route({
+		method: 'GET',
+		path: '/some-route',
+		config: {
+			auth: {
+				mode: 'try',
+				strategy: 'session'
+			},
+			handler: function (request, reply) {
+				if (request.auth.isAuthenticated) {
+					// session data available
+					var session = request.auth.credentials
 
-		request.cookieAuth.set({ sid: sid });
-		return reply.redirect('/');
-	});
-};
+					return reply('Bro, you’re already authenticated :)')
+				} else {
+					return reply('You are not authenticated')
+        }
 
-const logout = function (request, reply) {
-
-	request.cookieAuth.clear();
-	return reply.redirect('/');
-};
-
-const app = new Server();
-app.connection({ port: 8000 });
-
-app.register(require('hapi-auth-cookie'), (err) => {
-
-	if (err) {
-		throw err;
-	}
-
-	const cache = app.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
-	app.app.cache = cache;
-
-	app.auth.strategy('session', 'cookie', true, {
-		password: 'password-should-be-32-characters',
-		cookie: 'sid-example',
-		redirectTo: '/login',
-		isSecure: false,
-		validateFunc: function (request, session, callback) {
-
-			cache.get(session.sid, (err, cached) => {
-
-				if (err) {
-					return callback(err, false);
-				}
-
-				if (!cached) {
-					return callback(null, false);
-				}
-
-				return callback(null, true, cached.account);
-			});
+				// further processing if not authenticated …
+			}
 		}
-	});
+	})
 
-	app.route([
-		{ method: 'GET', path: '/', config: { handler: home } },
-		{ method: ['GET', 'POST'], path: '/login', config: { handler: login, auth: { mode: 'try' }, plugins: { 'hapi-auth-cookie': { redirectTo: false } } } },
-		{ method: 'GET', path: '/logout', config: { handler: logout } }
-	]);
+	app.route({
+		method: 'GET',
+		path: '/logout',
+		config: {
+			auth: 'session',
+			handler: function (request, reply) {
+				// clear the session data
+				request.cookieAuth.clear()
 
-});
+				reply('Logged out. See you around :)')
+			}
+		}
+	})
 
-app.start(() => {
-	console.log(app.info.uri);
-});
+	app.start((err) => {
+		console.log(app.info.uri)
+	})
+})
+
