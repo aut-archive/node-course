@@ -20,6 +20,7 @@ Node.js Course Materials.
 
 - [Session 3](./session-3)
     - Destructuring Assignment
+    - JSON
     - Node.js Server Programming
         - SPA vs MVC
     - Introduction to Connect & Express

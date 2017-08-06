@@ -14,9 +14,21 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "boom": "^5.2.0",
     "chalk": "^2.0.1",
+    "connect": "^3.6.3",
+    "express": "^4.15.3",
     "fs-extra": "^4.0.0",
+    "good": "^7.2.0",
+    "handlebars": "^4.0.10",
+    "hapi": "^16.5.2",
+    "joi": "^10.6.0",
+    "lodash": "^4.17.4",
     "mongodb": "^2.2.30",
-    "request": "^2.81.0"
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0",
+    "vision": "^4.1.1"
   }
 }
