@@ -82,7 +82,7 @@ app.register(require('hapi-auth-cookie'), (err) => {
 		throw err;
 	}
 
-	const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
+	const cache = app.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
 	app.app.cache = cache;
 
 	app.auth.strategy('session', 'cookie', true, {
@@ -115,6 +115,6 @@ app.register(require('hapi-auth-cookie'), (err) => {
 
 });
 
-server.start(() => {
+app.start(() => {
 	console.log(app.info.uri);
 });

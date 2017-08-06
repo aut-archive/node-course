@@ -167,6 +167,12 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
+async@2.x.x:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
+  dependencies:
+    lodash "^4.14.0"
+
 async@^1.4.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -1112,6 +1118,13 @@ handlebars@^4.0.10:
   optionalDependencies:
     uglify-js "^2.6"
 
+hapi-auth-basic@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/hapi-auth-basic/-/hapi-auth-basic-4.2.0.tgz#a2f16b3e14317d44e3ad7934fe833f995ee82fc0"
+  dependencies:
+    boom "3.x.x"
+    hoek "4.x.x"
+
 hapi-auth-cookie@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/hapi-auth-cookie/-/hapi-auth-cookie-7.0.0.tgz#1bb9130d85ab0efe02f7df518e864867616a49a4"
@@ -1119,6 +1132,14 @@ hapi-auth-cookie@^7.0.0:
     boom "3.x.x"
     hoek "4.x.x"
     joi "8.x.x"
+
+hapi-mongodb@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/hapi-mongodb/-/hapi-mongodb-6.2.1.tgz#1c040a8211e0645dab4ceb693bbc418c6dd49b7e"
+  dependencies:
+    async "2.x.x"
+    joi "10.x.x"
+    mongodb "2.x.x"
 
 hapi@^16.5.2:
   version "16.5.2"
@@ -1638,7 +1659,7 @@ lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
 
-lodash@^4.0.0, lodash@^4.17.4, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -1751,7 +1772,7 @@ mongodb-core@2.1.14:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@^2.2.30:
+mongodb@2.x.x, mongodb@^2.2.30:
   version "2.2.30"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.30.tgz#8ccd801f676c8172040c2f2b47e9602a0d5634ab"
   dependencies:
