@@ -18,6 +18,24 @@ Node.js Course Materials.
     - IO: fs, fs-extra, readline
     - Prototype & Class
 
+- [Session 3](./session-3)
+    - Destructuring Assignment
+    - Node.js Server Programming
+        - SPA vs MVC
+    - Introduction to Connect & Express
+        - Middleware
+        - Req & Res
+    - Introduction to Hapi
+        - Plugins
+        - Request & Reply
+    - Hapi Examples
+        - Getting Started
+        - Routing
+        - Plugins
+        - Serve Static Files
+        - Render Handlebars Views
+    - Project
+
 ## Contributors
 - [Pooya Parsa](https://github.com/pi0)
 - [Iman Tabrizian](https://github.com/Tabrizian)

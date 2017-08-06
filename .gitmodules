@@ -1,0 +1,3 @@
+[submodule "session-3/nodejs-tutorials-hapi"]
+	path = session-3/nodejs-tutorials-hapi
+	url = https://github.com/fs-opensource/nodejs-tutorials-hapi.git

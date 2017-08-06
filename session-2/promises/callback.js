@@ -43,7 +43,7 @@ MongoClient.connect(url, function (err, db) {
   } else {
     console.log('Connected successfully to server')
   }
-  insertDocument(db, function () {
+  db.insertDocument(db, function () {
     db.close()
   })
-})
+}).then().then
