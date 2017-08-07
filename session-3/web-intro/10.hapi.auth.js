@@ -15,7 +15,7 @@ app.register(cookieAuth, (err) => {
 
   app.auth.strategy('session', 'cookie', {
     password: 'm!*"2/),p4:xDs%KEgVr7;e#85Ah^WYC',
-    cookie: 'future-studio-hapi-tutorials-cookie-auth-example',
+    cookie: 'my-app-cookie-name',
     isSecure: false
   })
 
