@@ -8,11 +8,12 @@ app.connection({
 })
 
 app.route({
-    method: 'GET',
+    method: '*',
     path: '/hello/{firstName}/{lastName}',
     handler(request, reply) {
         reply({
-            params: request.params
+            params: request.params,
+            goje: 'ghermez'
         })
     }
 })

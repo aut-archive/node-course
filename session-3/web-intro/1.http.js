@@ -6,6 +6,8 @@ const server = http.createServer((req, res) => {
 
   const { headers, url, method } = req
 
+  console.log(url)
+
   if(url === '/test') {
     res.end(JSON.stringify({url, method, headers}))
   } else if(url === '/') {

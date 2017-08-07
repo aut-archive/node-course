@@ -4,6 +4,7 @@ const app = connect()
 
 const STYLE = '<style> * { font-size: 100px; } </style><body>'
 
+// Init
 app.use((req, res, next) => {
     console.log(req.url)
 
@@ -14,12 +15,14 @@ app.use((req, res, next) => {
     next()
 })
 
+// Test
 app.use('/test', (req, res, next) => {
-    res.end('😋')
+    res.write('😋')
 })
 
+// Root
 app.use('/', (req, res, next) => {
-    res.end('💩')
+    res.write('💩')
 })
 
 app.listen(3002)

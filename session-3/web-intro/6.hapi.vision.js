@@ -6,7 +6,7 @@ app.connection({ port: 3000 });
 
 const handler = (request, reply) => {
 
-    reply.view('static/index', {
+    reply.view('index', {
         title: 'Handlebars | Hapi ' + request.server.version,
         message: 'Hello World!'
     });
@@ -19,7 +19,12 @@ app.register(require('vision'), (err) => {
     }
 
     app.views({
-        engines: { html: require('handlebars') }
+        engines: { 
+            html: require('handlebars'),            
+            
+        },
+        path: __dirname + '/static',
+        layout: true 
     });
 
     app.route({ method: 'GET', path: '/', handler: handler });
