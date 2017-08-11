@@ -7,12 +7,12 @@ app.connection({ port: 3000 });
 const handler = (request, reply) => {
 
     reply.view('index', {
-        title: 'Handlebars | Hapi ' + request.server.version,
+        title: 'Handlebars | Hapi ',
         message: 'Hello World!'
     });
 };
 
-app.register(require('vision'), (err) => {
+app.register([require('vision')], (err) => {
 
     if (err) {
         throw err;
@@ -23,8 +23,8 @@ app.register(require('vision'), (err) => {
             html: require('handlebars'),            
             
         },
-        path: __dirname + '/static',
-        layout: true 
+        layout: true,
+        path: __dirname + '/static'
     });
 
     app.route({ method: 'GET', path: '/', handler: handler });

@@ -36,7 +36,7 @@ server.register(Basic, (err) => {
 		method: 'GET',
 		path: '/',
 		config: {
-      auth: 'simple',
+      		auth: 'simple',
 			handler: function (request, reply) {
 				reply('hello, ' + request.auth.credentials.name);
 			}
